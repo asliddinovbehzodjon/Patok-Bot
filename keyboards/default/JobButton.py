@@ -30,3 +30,12 @@ talab_taklif= ReplyKeyboardMarkup(resize_keyboard=True,row_width=2,
                                     KeyboardButton(text="🔙 Orqaga")
                                    ]
                                ])
+favqulotda= ReplyKeyboardMarkup(resize_keyboard=True,row_width=2,
+                               keyboard=[
+                                   [KeyboardButton(text="Yo'qolgan buyumlar"),
+                                    KeyboardButton(text="Yo'qolgan odamlar")],
+                                   [
+                                    KeyboardButton(text="Sharoitim og'ir"),
+                                    KeyboardButton(text="🔙 Orqaga")
+                                   ]
+                               ])
