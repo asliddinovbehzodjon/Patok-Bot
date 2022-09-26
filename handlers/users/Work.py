@@ -116,9 +116,9 @@ async def sixth(message:types.Message,state:FSMContext):
                  f"🔢 Talablar: <b>{data['requirements']}</b>"
     await message.answer(result)
     await message.answer("Barcha ma'lumotlar to'g'rimi?", reply_markup=checkbtn)
-    await JobStateClass.next()
+    await WorkStateClass.next()
 
-@dp.message_handler(state=JobStateClass.check)
+@dp.message_handler(state=WorkStateClass.check)
 async def sixth(message:types.Message,state:FSMContext):
     mycheck = message.text
 
