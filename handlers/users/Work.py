@@ -73,7 +73,7 @@ async def sixth(message:types.Message,state:FSMContext):
     await state.update_data({
         "time":time
     })
-    await message.answer("<b>💰 Maosh:</b>\n\n"
+    await message.answer("<b>💰 Maosh:</b>\n\n"  
                          "Masalan: 300$")
     await WorkStateClass.next()
 @dp.message_handler(state=WorkStateClass.salary)
@@ -95,7 +95,7 @@ async def sixth(message:types.Message,state:FSMContext):
     telegram = message.from_user.username
     if telegram:
         result = f"<b>Xodim kerak</b>\n\n " \
-                 f"🏢 Idora: <b>{data['name']}</b>\n" \
+                 f"🏢 Idora: <b>{data['place']}</b>\n" \
                  f"💻 Yosh: <b>{data['job']}</b>\n" \
                  f"📞 Aloqa: <b>{data['phone']}</b>\n" \
                  f"💬 Telegram: <b>{telegram}</b>\n" \
@@ -106,7 +106,7 @@ async def sixth(message:types.Message,state:FSMContext):
                  f"🔢 Talablar: <b>{data['requirements']}</b>"
     else:
         result = f"<b>Xodim kerak</b>\n\n " \
-                 f"🏢 Idora: <b>{data['name']}</b>\n" \
+                 f"🏢 Idora: <b>{data['place']}</b>\n" \
                  f"💻 Yosh: <b>{data['job']}</b>\n" \
                  f"📞 Aloqa: <b>{data['phone']}</b>\n" \
                  f"💰 Maosh: <b>{data['salary']}</b>\n" \
@@ -127,7 +127,7 @@ async def sixth(message:types.Message,state:FSMContext):
         telegram = message.from_user.username
         if telegram:
             result = f"<b>Xodim kerak</b>\n\n " \
-                     f"🏢 Idora: <b>{data['name']}</b>\n" \
+                     f"🏢 Idora: <b>{data['place']}</b>\n" \
                      f"💻 Yosh: <b>{data['job']}</b>\n" \
                      f"📞 Aloqa: <b>{data['phone']}</b>\n" \
                      f"💬 Telegram: <b>{telegram}</b>\n" \
@@ -138,7 +138,7 @@ async def sixth(message:types.Message,state:FSMContext):
                      f"🔢 Talablar: <b>{data['requirements']}</b>"
         else:
             result = f"<b>Xodim kerak</b>\n\n " \
-                     f"🏢 Idora: <b>{data['name']}</b>\n" \
+                     f"🏢 Idora: <b>{data['place']}</b>\n" \
                      f"💻 Yosh: <b>{data['job']}</b>\n" \
                      f"📞 Aloqa: <b>{data['phone']}</b>\n" \
                      f"💰 Maosh: <b>{data['salary']}</b>\n" \
