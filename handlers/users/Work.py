@@ -97,7 +97,7 @@ async def sixth(message:types.Message,state:FSMContext):
         result = f"<b>Xodim kerak</b>\n\n " \
                  f"🏢 Idora: <b>{data['place']}</b>\n" \
                  f"💻 Yosh: <b>{data['job']}</b>\n" \
-                 f"📞 Aloqa: <b>{data['phone']}</b>\n" \
+                 f"📞 Aloqa: <b>{data['tel']}</b>\n" \
                  f"💬 Telegram: <b>{telegram}</b>\n" \
                  f"💰 Maosh: <b>{data['salary']}</b>\n" \
                  f"🌎 Hudud: <b>{data['address']}</b>\n" \
@@ -108,7 +108,7 @@ async def sixth(message:types.Message,state:FSMContext):
         result = f"<b>Xodim kerak</b>\n\n " \
                  f"🏢 Idora: <b>{data['place']}</b>\n" \
                  f"💻 Yosh: <b>{data['job']}</b>\n" \
-                 f"📞 Aloqa: <b>{data['phone']}</b>\n" \
+                 f"📞 Aloqa: <b>{data['tel']}</b>\n" \
                  f"💰 Maosh: <b>{data['salary']}</b>\n" \
                  f"🌎 Hudud: <b>{data['address']}</b>\n" \
                  f"🕰 Murojaat qilish vaqti: : <b>{data['connect']}</b>\n" \
@@ -129,7 +129,7 @@ async def sixth(message:types.Message,state:FSMContext):
             result = f"<b>Xodim kerak</b>\n\n " \
                      f"🏢 Idora: <b>{data['place']}</b>\n" \
                      f"💻 Yosh: <b>{data['job']}</b>\n" \
-                     f"📞 Aloqa: <b>{data['phone']}</b>\n" \
+                     f"📞 Aloqa: <b>{data['tel']}</b>\n" \
                      f"💬 Telegram: <b>{telegram}</b>\n" \
                      f"💰 Maosh: <b>{data['salary']}</b>\n" \
                      f"🌎 Hudud: <b>{data['address']}</b>\n" \
@@ -140,7 +140,7 @@ async def sixth(message:types.Message,state:FSMContext):
             result = f"<b>Xodim kerak</b>\n\n " \
                      f"🏢 Idora: <b>{data['place']}</b>\n" \
                      f"💻 Yosh: <b>{data['job']}</b>\n" \
-                     f"📞 Aloqa: <b>{data['phone']}</b>\n" \
+                     f"📞 Aloqa: <b>{data['tel']}</b>\n" \
                      f"💰 Maosh: <b>{data['salary']}</b>\n" \
                      f"🌎 Hudud: <b>{data['address']}</b>\n" \
                      f"🕰 Murojaat qilish vaqti: : <b>{data['connect']}</b>\n" \
