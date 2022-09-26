@@ -2,7 +2,13 @@ from aiogram.types import  ReplyKeyboardMarkup,KeyboardButton,InlineKeyboardButt
 button =ReplyKeyboardMarkup(resize_keyboard=True,
                             keyboard=[
                                 [KeyboardButton(text ="💼 Ish kerak"),
-                                 KeyboardButton(text ="🏢 Xodim kerak")]
+                                 KeyboardButton(text ="🏢 Xodim kerak")],
+                                [KeyboardButton(text="✍ Talab va taklif"),
+                                 KeyboardButton(text="🌍 Boshqa e'lon")],
+                                [
+                                    KeyboardButton(text="Favqulotda 🆘"),
+                                    KeyboardButton(text="Cv va Rezumi 📝")
+                                ]
                             ])
 checkbtn = ReplyKeyboardMarkup(resize_keyboard=True,row_width=2,
                                keyboard=[
