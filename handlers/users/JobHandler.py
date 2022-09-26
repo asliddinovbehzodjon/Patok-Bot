@@ -95,25 +95,20 @@ async def sixth(message:types.Message,state:FSMContext):
         "goal":goal
     })
     data = await  state.get_data()
-    result = f"<b>Ish kerak</b>\n\n " \
-             f"👤 Ishchi: <b>{data['name']}</b>\n" \
-             f"🌐 Yosh: <b>{data['age']}</b>\n" \
-             f"📞 Aloqa: <b>{data['phone']}</b>\n" \
-             f"💼 Kasb: <b>{data['job']}</b>\n" \
-             f"💰 Maosh: <b>{data['salary']}</b>\n" \
-             f"🌎 Hudud: <b>{data['address']}</b>\n" \
-             f"ℹ Qisqacha malumot: <b>{data['about']}</b>\n" \
-             f"🕰 Murojaat qilish vaqti: : <b>{data['time']}</b>\n" \
-             f"🎯 Maqsad: <b>{data['goal']}</b>"
-    await message.answer(result)
-    await message.answer("Barcha ma'lumotlar to'g'rimi?",reply_markup=checkbtn)
-    await JobStateClass.next()
-@dp.message_handler(state=JobStateClass.check)
-async def sixth(message:types.Message,state:FSMContext):
-    mycheck = message.text
-
-    if mycheck=="✅ Ha":
-        data = await  state.get_data()
+    telegram = message.from_user.username
+    if telegram:
+        result = f"<b>Ish kerak</b>\n\n " \
+                 f"👤 Ishchi: <b>{data['name']}</b>\n" \
+                 f"🌐 Yosh: <b>{data['age']}</b>\n" \
+                 f"📞 Aloqa: <b>{data['phone']}</b>\n" \
+                 f"💬 Telegram: <b>{telegram}</b>\n" \
+                 f"💼 Kasb: <b>{data['job']}</b>\n" \
+                 f"💰 Maosh: <b>{data['salary']}</b>\n" \
+                 f"🌎 Hudud: <b>{data['address']}</b>\n" \
+                 f"ℹ Qisqacha malumot: <b>{data['about']}</b>\n" \
+                 f"🕰 Murojaat qilish vaqti: : <b>{data['time']}</b>\n" \
+                 f"🎯 Maqsad: <b>{data['goal']}</b>"
+    else:
         result = f"<b>Ish kerak</b>\n\n " \
                  f"👤 Ishchi: <b>{data['name']}</b>\n" \
                  f"🌐 Yosh: <b>{data['age']}</b>\n" \
@@ -124,6 +119,39 @@ async def sixth(message:types.Message,state:FSMContext):
                  f"ℹ Qisqacha malumot: <b>{data['about']}</b>\n" \
                  f"🕰 Murojaat qilish vaqti: : <b>{data['time']}</b>\n" \
                  f"🎯 Maqsad: <b>{data['goal']}</b>"
+    await message.answer(result)
+    await message.answer("Barcha ma'lumotlar to'g'rimi?",reply_markup=checkbtn)
+    await JobStateClass.next()
+@dp.message_handler(state=JobStateClass.check)
+async def sixth(message:types.Message,state:FSMContext):
+    mycheck = message.text
+
+    if mycheck=="✅ Ha":
+        data = await  state.get_data()
+        telegram = message.from_user.username
+        if telegram:
+            result = f"<b>Ish kerak</b>\n\n " \
+                 f"👤 Ishchi: <b>{data['name']}</b>\n" \
+                 f"🌐 Yosh: <b>{data['age']}</b>\n" \
+                 f"📞 Aloqa: <b>{data['phone']}</b>\n" \
+                 f"💬 Telegram: <b>{telegram}</b>\n"\
+                 f"💼 Kasb: <b>{data['job']}</b>\n" \
+                 f"💰 Maosh: <b>{data['salary']}</b>\n" \
+                 f"🌎 Hudud: <b>{data['address']}</b>\n" \
+                 f"ℹ Qisqacha malumot: <b>{data['about']}</b>\n" \
+                 f"🕰 Murojaat qilish vaqti: : <b>{data['time']}</b>\n" \
+                 f"🎯 Maqsad: <b>{data['goal']}</b>"
+        else:
+            result = f"<b>Ish kerak</b>\n\n " \
+                     f"👤 Ishchi: <b>{data['name']}</b>\n" \
+                     f"🌐 Yosh: <b>{data['age']}</b>\n" \
+                     f"📞 Aloqa: <b>{data['phone']}</b>\n" \
+                     f"💼 Kasb: <b>{data['job']}</b>\n" \
+                     f"💰 Maosh: <b>{data['salary']}</b>\n" \
+                     f"🌎 Hudud: <b>{data['address']}</b>\n" \
+                     f"ℹ Qisqacha malumot: <b>{data['about']}</b>\n" \
+                     f"🕰 Murojaat qilish vaqti: : <b>{data['time']}</b>\n" \
+                     f"🎯 Maqsad: <b>{data['goal']}</b>"
         await bot.send_message(chat_id=-1001714221854,text=result,reply_markup=send)
         await message.answer(f"<b>📪 So`rovingiz tekshirish uchun adminga jo`natildi!</b>\n"
                              f"E'lon 24-48 soat ichida kanalda chiqariladi.",reply_markup=ReplyKeyboardRemove())
