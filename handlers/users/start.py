@@ -5,7 +5,7 @@ from loader import dp
 
 
 @dp.message_handler(CommandStart())
-async def bot_start(message: types.Message):
+async def bot_start(message: types.Message,locale):
     await message.answer("<b>Assalomu alaykum!</b>\n"
                          "Birmiz loyihasini rasmiy telegram botiga xush kelibsiz!\n"
                          "E'lon berish uchun kerakli bo'limni tanlang!",reply_markup=button)

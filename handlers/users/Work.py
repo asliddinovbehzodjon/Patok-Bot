@@ -2,8 +2,10 @@ from aiogram.dispatcher import  FSMContext
 from aiogram import  types
 from loader import  dp,bot
 from aiogram.types import ReplyKeyboardRemove
-from keyboards.default.JobButton import checkbtn,button,send
+from keyboards.default.JobButton import checkbtn,button
+from aiogram.types import  InlineKeyboardButton,InlineKeyboardMarkup
 from aiogram.dispatcher.filters.builtin import Command
+from api import create_work
 from aiogram.dispatcher.filters import  Text
 from states.WorkState import WorkStateClass
 @dp.message_handler(Text(startswith="🏢 Xodim kerak"),state=None)
@@ -96,9 +98,9 @@ async def sixth(message:types.Message,state:FSMContext):
     if telegram:
         result = f"<b>Xodim kerak</b>\n\n " \
                  f"🏢 Idora: <b>{data['place']}</b>\n" \
-                 f"💻 Yosh: <b>{data['job']}</b>\n" \
+                 f"💻 Lavozim: <b>{data['job']}</b>\n" \
                  f"📞 Aloqa: <b>{data['tel']}</b>\n" \
-                 f"💬 Telegram: <b>{telegram}</b>\n" \
+                 f"💬 Telegram: <b>@{telegram}</b>\n" \
                  f"💰 Maosh: <b>{data['salary']}</b>\n" \
                  f"🌎 Hudud: <b>{data['address']}</b>\n" \
                  f"🕰 Murojaat qilish vaqti: : <b>{data['connect']}</b>\n" \
@@ -107,7 +109,7 @@ async def sixth(message:types.Message,state:FSMContext):
     else:
         result = f"<b>Xodim kerak</b>\n\n " \
                  f"🏢 Idora: <b>{data['place']}</b>\n" \
-                 f"💻 Yosh: <b>{data['job']}</b>\n" \
+                 f"💻 Lavozim: <b>{data['job']}</b>\n" \
                  f"📞 Aloqa: <b>{data['tel']}</b>\n" \
                  f"💰 Maosh: <b>{data['salary']}</b>\n" \
                  f"🌎 Hudud: <b>{data['address']}</b>\n" \
@@ -121,6 +123,7 @@ async def sixth(message:types.Message,state:FSMContext):
 @dp.message_handler(state=WorkStateClass.check)
 async def sixth(message:types.Message,state:FSMContext):
     mycheck = message.text
+    id=message.from_user.id
 
     if mycheck=="✅ Ha":
         data = await  state.get_data()
@@ -128,9 +131,9 @@ async def sixth(message:types.Message,state:FSMContext):
         if telegram:
             result = f"<b>Xodim kerak</b>\n\n " \
                      f"🏢 Idora: <b>{data['place']}</b>\n" \
-                     f"💻 Yosh: <b>{data['job']}</b>\n" \
+                     f"💻 Lavozim: <b>{data['job']}</b>\n" \
                      f"📞 Aloqa: <b>{data['tel']}</b>\n" \
-                     f"💬 Telegram: <b>{telegram}</b>\n" \
+                     f"💬 Telegram: <b>@{telegram}</b>\n" \
                      f"💰 Maosh: <b>{data['salary']}</b>\n" \
                      f"🌎 Hudud: <b>{data['address']}</b>\n" \
                      f"🕰 Murojaat qilish vaqti: : <b>{data['connect']}</b>\n" \
@@ -139,13 +142,19 @@ async def sixth(message:types.Message,state:FSMContext):
         else:
             result = f"<b>Xodim kerak</b>\n\n " \
                      f"🏢 Idora: <b>{data['place']}</b>\n" \
-                     f"💻 Yosh: <b>{data['job']}</b>\n" \
+                     f"💻 Lavozim: <b>{data['job']}</b>\n" \
                      f"📞 Aloqa: <b>{data['tel']}</b>\n" \
                      f"💰 Maosh: <b>{data['salary']}</b>\n" \
                      f"🌎 Hudud: <b>{data['address']}</b>\n" \
                      f"🕰 Murojaat qilish vaqti: : <b>{data['connect']}</b>\n" \
                      f"🕰 Ish vaqti: : <b>{data['time']}</b>\n" \
                      f"🔢 Talablar: <b>{data['requirements']}</b>"
+        send = InlineKeyboardMarkup(resize_keyboard=True, row_width=2,
+                                    inline_keyboard=[
+                                        [InlineKeyboardButton(text="✅ E'lon qilish", callback_data=f'send{id}')],
+                                        [InlineKeyboardButton(text="❌ Bekor qilish", callback_data=f'cancel{id}')]
+                                    ])
+        create_work(company=data['place'],job=data['job'],phone=data['tel'],salary=data['salary'],address=data['address'],contact_time=data['connect'],requirements=data['requirements'],work_time=data['time'])
         await bot.send_message(chat_id=-1001714221854,text=result,reply_markup=send)
         await message.answer(f"<b>📪 So`rovingiz tekshirish uchun adminga jo`natildi!</b>\n"
                              f"E'lon 24-48 soat ichida kanalda chiqariladi.",reply_markup=ReplyKeyboardRemove())
