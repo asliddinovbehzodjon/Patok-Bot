@@ -1,4 +1,4 @@
-BASE_URL = "http://127.0.0.1:8000/api/v1"
+BASE_URL = "https://patokuz.pythonanywhere.com/api/v1"
 import requests
 import json
 def create_worker(name,age,salary,phone,address,contact_time,about,job,aim):
