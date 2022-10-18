@@ -1,4 +1,8 @@
-BASE_URL = "http://127.0.0.1:8000/api/v1"
+from environs import Env
+env = Env()
+env.read_env()
+URL = env.str('URL')
+BASE_URL = f"{URL}/api/v1"
 import requests
 import json
 def create_worker(name,age,salary,phone,address,contact_time,about,job,aim):
