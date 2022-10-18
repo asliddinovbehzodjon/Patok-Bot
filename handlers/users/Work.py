@@ -3,14 +3,14 @@ from aiogram import  types
 from loader import  dp,bot
 from aiogram.types import ReplyKeyboardRemove
 from keyboards.default.JobButton import checkbtn,button
-from aiogram.types import  InlineKeyboardButton,InlineKeyboardMarkup
+from aiogram.types import  InlineKeyboardButton,InlineKeyboardMarkup,ReplyKeyboardRemove
 from aiogram.dispatcher.filters.builtin import Command
 from api import create_work
 from aiogram.dispatcher.filters import  Text
 from states.WorkState import WorkStateClass
 @dp.message_handler(Text(startswith="🏢 Xodim kerak"),state=None)
 async def first(message:types.Message):
-    await message.answer("Idora nomini kiriting.")
+    await message.answer("Idora nomini kiriting.",reply_markup=ReplyKeyboardRemove())
     await WorkStateClass.place.set()
 @dp.message_handler(state=WorkStateClass.place)
 async def second(message:types.Message,state:FSMContext):

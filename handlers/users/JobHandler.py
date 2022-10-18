@@ -1,6 +1,6 @@
 from aiogram.dispatcher import  FSMContext
 from aiogram import  types
-from aiogram.types import  InlineKeyboardButton,InlineKeyboardMarkup
+from aiogram.types import  InlineKeyboardButton,InlineKeyboardMarkup,ReplyKeyboardRemove
 from loader import  dp,bot
 from aiogram.types import ReplyKeyboardRemove
 from api import create_worker
@@ -10,7 +10,7 @@ from aiogram.dispatcher.filters import  Text
 from states.JobState import JobStateClass
 @dp.message_handler(Text(startswith="💼 Ish kerak"),state=None)
 async def first(message:types.Message):
-    await message.answer("Ism va familyangizni kiriting.")
+    await message.answer("Ism va familyangizni kiriting.",reply_markup=ReplyKeyboardRemove())
     await JobStateClass.name.set()
 @dp.message_handler(state=JobStateClass.name)
 async def second(message:types.Message,state:FSMContext):
