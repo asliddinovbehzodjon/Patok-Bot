@@ -7,12 +7,17 @@ from filters import IsGroup,IsGroupCall
 from filters.admins import AdminFilter
 from aiogram.dispatcher.filters import Text
 from loader import dp, bot
+from environs import Env
+
+# environs kutubxonasidan foydalanish
+env = Env()
+env.read_env()
 @dp.callback_query_handler(IsGroupCall(),Text(startswith='send'))
 async def send(call:CallbackQuery):
 
     await call.answer(cache_time=60)
     id = call.message.message_id
-    await bot.forward_message(chat_id=-1001623898668,from_chat_id=-1001714221854,message_id=id)
+    await bot.forward_message(chat_id=env.int('CHANNEL'),from_chat_id=env.int('GROUP'),message_id=id)
     await call.message.delete()
     data = call.data
     await bot.send_message(chat_id=data[4:],

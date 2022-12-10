@@ -5,4 +5,5 @@ from . import Work
 from . import Talab
 from . import Another
 from . import Favqulotda
+from . import aboutus
 from . import echo

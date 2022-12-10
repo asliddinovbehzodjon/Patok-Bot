@@ -33,3 +33,12 @@ def create_work(company,job,phone,salary,address,contact_time,work_time,requirem
         "requirements":requirements
     })
     return "Ok"
+def create_another(title,description,price,connect):
+    url = f"{BASE_URL}/another/"
+    requests.post(url,data={
+        'title':title,
+        'description':description,
+        'price':price,
+        'connect':connect
+    })
+    return 'Ok'

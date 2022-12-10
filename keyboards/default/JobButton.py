@@ -7,7 +7,7 @@ button =ReplyKeyboardMarkup(resize_keyboard=True,
                                  KeyboardButton(text="🌍 Boshqa e'lon")],
                                 [
                                     KeyboardButton(text="Favqulotda 🆘"),
-                                    KeyboardButton(text="Cv va Rezumi 📝")
+
                                 ]
                             ])
 checkbtn = ReplyKeyboardMarkup(resize_keyboard=True,row_width=2,
@@ -35,3 +35,7 @@ favqulotda= ReplyKeyboardMarkup(resize_keyboard=True,row_width=2,
                                     KeyboardButton(text="🔙 Orqaga")
                                    ]
                                ])
+newbutton = ReplyKeyboardMarkup(resize_keyboard=True,
+                                keyboard=[
+                                    [KeyboardButton(text="🛑 Bekor qilish")]
+                                ])
